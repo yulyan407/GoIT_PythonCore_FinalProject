@@ -1,29 +1,354 @@
-##Discription
+# CLIB
+### The Command Line Interface Bot by **PyCrafters**
 
-This script is a console helper bot that recognizes commands entered from the keyboard and responds accordingly.
+### Table of Contents  
+1. [Project Description](#project-description)
+- 1.1. [Book of Contacts](#book-of-contacts)
+- 1.2. [Note Book](#note-book)
+- 1.3. [Files Sorter](#sorting-files)
+2. [Installation](#installation)
+3. [Using the Program](#using-the-program)
+4. [Available Commands](#available-commands)
+   - [General](#general-commands)
+   - [Book of Contacts](#book-of-contacts-commands)
+   - [Note Book](#note-book-commands)
+   - [File Sorter](#file-sorter-commands)
+5. [License](#license)
+6. [Authors](#authors)
+____
 
-The bot-assistant can save a name, a phone number and a birthday, find a phone number and birthday by name, change a recorded phone number, display all saved records in the console. It also gives the number of days to the next birthday for contact.
+# Project Description
+This project is a console application, developed for keeping contact details, notes, and for searching, editing,
+and sorting the data. The main functions include: 
 
-##The bot accepts commands:
+### Book of Contacts
+- **Keeping contact details**: Add contacts with names, addresses, phone numbers, email addresses, and birthdays.
+- **Outputting contacts by birthdate**: Search and output a list of contacts whose birthday occur in a specified number
+of days from the current date.
+- **Checking the input data**: You can check the correctness of inputted phone number and email address while creating 
+a new or editing an existing record. In case of incorrect input, you will receive a corresponding notification.  
+- **Contact search**: Make the search for a specified contact in your contact book.
+- **Editing and deleting contacts**: Handy capabilities for editing and deleting records. 
 
-"hello", "hi" replies to the console "How can I help you?"
+### Note Book
+- **Notes keeping**: Write and keep you notes with text information.
+- **Notes search**: Search for notes in your Book of Notes.
+- **Editing and deleting notes**: Handy capabilities for editing and deleting notes.
+- **Adding tags**: An option to add note tags or keywords that describe the topic and the inputted message.
+- **Sorting notes by tag**: Allows to sort and search notes by tags and keywords.
 
-"add ...". With this command, the bot saves a new contact in memory or add a new phone number and birthday for the existing contact in memory. Instead of ... the user enters the name and phone number, necessarily with a space.
+### Sorting Files
+This project is designed to organize and manage your contact details, notes, and files as easy as possible.
+- **Sorting files in a folder**: Automatic files sorting in a specified folder by category, such as images, documents,
+videos, etc.
+____
 
-"add_birthday ...". With this command, the bot add a birthday for the existing contact in memory. Instead of ... the user enters the name and birthday, necessarily with a space.
+# Installation
+1. To install the program as executable file, open the Terminal and in the command line change the directory
+to a folder with *setup.py* installation file.
 
-"change ..." With this command, the bot stores the new phone number of the existing contact in memory. Instead of ... the user enters the name, the old phone number and the new phone number, necessarily with a space.
+2. Next, in the Terminal type:
+```commandline
+pip install -e .
+```
+This will also build a new Python package named 'Personal_assistant', which you now can import.
 
-"phone ..." With this command, the bot outputs the phone number for the specified contact to the console. Instead of ... the user enters the name of the contact whose number should be displayed.
+3. Finally, in the Terminal type **helper** to run the program.
+____
 
-"get_birthday ..." With this command, the bot outputs the birthday and the numbers of days to the next birthday for the specified contact to the console. Instead of ... the user enters the name of the contact whose birthday should be displayed.
+# Using the Program
+After installing the program and running it in the Terminal, the user can:
+- access the Phone Book (ref. see the *Book of Commands Contacts* section)
+- access the Note Book (ref. see the *Note Book Commands* section);
+- sort files using the integrated file sorter (ref. see the *sort* function)
+____
 
-"search ..." With this command, the bot outputs the contacts whose name or phone number matches the entered string to the console. Instead of ... the user enters the string.
+# Available Commands
+The user should use the command line and enter commands to control CLIB and the data he entered.
+The full list of available commands is presented below:
 
-"remove ..." With this command, the bot removes the phone number for the specified contact to the console. Instead of ... the user enters the name of the contact and phone number that should be removed from the address book.
+## General Commands
+### Command: hello / hi
+- Result: Welcomes CLIB and greets the user
+- Example:
+```commandline
+Input:
+hello
 
-"show all". With this command, the bot outputs all saved contacts with phone numbers to the console.
+Output:
+How can I help you?
+```
 
-"show_page ...". With this command, the bot outputs saved contacts with all information on the specified page of the address book to the console. Instead of ... the user enters the number of the page that should be displayed and the number of records on each page of the address book.
+### Command: help
+- Result: Prints the full list of commands available to a user
+- Example:
+```commandline
+Input:
+help
+```
 
-"good bye", "close", "exit" by any of these commands, the bot ends its work after outputting "Good bye!" to the console.
+### Command: goodbye / close / exit
+- Result: Quits the program and terminates the Command Line Interface Bot
+- Example:
+```commandline
+Input:
+close
+
+Output:
+Good bye!
+```
+____
+
+## Book of Contacts Commands
+### Command: add
+- Result: Adds the contact name, his 12-digit phone number, and birthday (YYYY-MM-DD) to the Book of Contacts
+Optionally, the user can add only the contact name itself, without providing the phone and birthday 
+- Example:
+```commandline
+Input:
+add Steve 380935552277 1985-01-01
+
+Output:
+Contact named Steve with a phone number 380935552277 and 1985-01-01 birthday has been added.
+```
+
+### Command: add birthday
+- Result: Adds birthday data to a specified contact name
+- Example:
+```commandline
+Input:
+add birthday Steve 1985-01-01
+
+Output:
+Steve's birthday 1985-01-01 has been added.
+```
+
+### Command: add email
+- Result: Adds an email to a specified contact name
+- Example:
+```commandline
+Input:
+add email Steve example@gmail.com
+
+Output:
+Email example@gmail.com for Steve has been added.
+```
+
+### Command: add address
+- Result: Adds an address to a specified contact name
+- Example:
+```commandline
+Input:
+add address Steve Stepana Bandery 16, kv. 8
+
+Output:
+The address Stepana Bandery 16, kv. 8 for Steve has been added.
+```
+
+### Command: change phone
+- Result: Changes an old phone number of a specified contact to a new one
+- Example:
+```commandline
+Input:
+change phone Steve 380935552277 380951113322
+
+Output:
+Steve's phone number is now 380951113322
+```
+
+### Command: get phone
+- Result: If exists, returns a phone number of a specified contact
+- Example:
+```commandline
+Input:
+get phone Steve
+
+Output:
+Steve ->
+--Phones:
+380951113322
+```
+
+### Command: get email
+- Result: If exists, returns an email number of a specified contact
+- Example:
+```commandline
+Input:
+get email Steve
+
+Output:
+Steve ->
+--Email:
+example@gmail.com
+```
+
+### Command: get address
+- Result: If exists, returns an address of a specified contact name
+- Example:
+```commandline
+Input:
+get address Steve
+
+Output:
+Steve ->
+--Address:
+Stepana Bandery 16, kv. 8
+```
+
+### Command: get birthday
+- Result: If exists in Book of Contacts, returns a birthday of a specified contact name and the number of days
+till next birthday.
+- Example:
+```commandline
+Input:
+get birthday Steve
+
+Output:
+There is no birthdate for a contact named Steve
+```
+
+### Command: show
+- Result: If exists in Book of Contacts, shows a name and a phone number
+- Examples:
+```commandline
+Input:
+show Steve
+
+Output:
+Steve -->
+-- Phones:
+380951113322
+-- Emails:
+example@gmail.com
+-- Address:
+Stepana Bandery 16, kv. 8
+```
+
+### Command: delete phone
+- Result: Deletes the phone number of a specified contact
+- Example:
+```commandline
+Input:
+delete phone Steve 380951113322
+
+Output:
+Steve's phone number 380951113322 has been removed.
+```
+
+### Command: show all
+- Result: Prints all the contact details in the Book of Contacts
+- Example:
+```commandline
+Input:
+show all
+
+Output:
+Steve -->
+-- Emails:
+example@gmail.com
+-- Address:
+Stepana Bandery 16, kv. 8
+```
+
+### Command: show page
+- Result: Returns contacts from the address book for a given page number
+- Example:
+```commandline
+Input:
+show page Steve 380951113322
+```
+
+### Command: delete
+- Result: Deletes a contact with a specified name
+- Examples:
+```commandline
+Input:
+delete Steve
+
+Output:
+Contact Steve has been deleted.
+```
+____
+
+## Note Book Commands
+### Command: add note
+- Result: Adds a new note to the Note Book. Optionally, you can add note tags by typing '#<tag name>' after the note
+- Example:
+```commandline
+Input:
+add note welcome onboard
+add note hello world
+add note buy milk #buy
+add note buy eggs #buy
+```
+
+### Command: find note
+- Result: Returns a list of notes that contain a keyword or a tag provided by the user
+- Example:
+```commandline
+Input:
+find note #buy
+
+Output:
+Found notes:
+buy milk
+buy eggs
+```
+
+### Command: edit note
+- Result: Prints out a list of notes that contain a keyword or a tag provided by the user for further editing
+- Example:
+```commandline
+Input:
+edit note w
+
+Output:
+Notes that match the condition:
+1) welcome onboard
+2) hello world
+```
+
+### Command: delete note
+- Result: Permanently deletes a specified note by providing a note keyword first, and then choosing one of the options.
+- Example:
+```commandline
+Input:
+delete note w
+
+Output:
+Notes that match the condition:
+1) welcome onboard
+2) hello world
+Available options:
+Cancel deletion: enter '0'
+Delete all notes: enter 'a' or 'A'
+Delete note #: enter note number
+Please enter your command:
+```
+____
+
+## File Sorter Commands
+### Command: sort
+   - Result: Sorts files by folders in a destination directory depending on the file extension
+   - Example:
+```commandline
+Input:
+sort
+
+Output
+Enter the path to the folder you want to sort: C:\Users\User\Documents\files-to_sort
+```
+____
+
+## License
+This project is distributed under the **MIT** license.
+____
+
+## Authors
+The **PyCrafters** Team:
+- [Yuliia Didenko](https://github.com/yulyan407)
+- [Maksim Nesterovskyi](https://github.com/legendarym4x)
+- [Kostiantyn Gorishnyi](https://github.com/Kostiantyn78)
+- [Taras Barskyi](https://github.com/Barskyi)
+- [Gregory Ostapenko](https://github.com/InSmartGroup)
+____
